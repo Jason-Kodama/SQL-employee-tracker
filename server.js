@@ -96,7 +96,9 @@ const addDepartment = () => {
     ]).then((answers) => {
         db.query(`INSERT INTO department (name) VALUES ("${answers.name.trim()}")`)
         console.log('Successful entry')
-    }) 
+    }).finally(()=> {
+        promptUser()
+    })
 }
 const addRole = () => {
     return inquirer.prompt([
